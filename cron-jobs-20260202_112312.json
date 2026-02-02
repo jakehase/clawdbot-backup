@@ -1,0 +1,10 @@
+│
+◇  Doctor warnings ──────────────────────────────────────╮
+│                                                        │
+│  - State dir migration skipped: target already exists  │
+│    (/root/.openclaw). Remove or merge manually.        │
+│                                                        │
+├────────────────────────────────────────────────────────╯
+{
+  "jobs": []
+}
