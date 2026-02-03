@@ -1,0 +1,141 @@
+│
+◇  Doctor warnings ──────────────────────────────────────╮
+│                                                        │
+│  - State dir migration skipped: target already exists  │
+│    (/root/.openclaw). Remove or merge manually.        │
+│                                                        │
+├────────────────────────────────────────────────────────╯
+{
+  "jobs": [
+    {
+      "id": "067d762c-c05f-41b4-85fa-2075324db534",
+      "agentId": "main",
+      "name": "clawdbot-nightly-backup",
+      "description": "Nightly backup of Clawdbot configs, memory, and cron jobs to GitHub",
+      "enabled": true,
+      "createdAtMs": 1770151898575,
+      "updatedAtMs": 1770152093363,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 2 * * *",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Run the Clawdbot backup script at /root/clawd/pmnhp-billing/scripts/backup-clawdbot.sh. This backs up:\n1. Clawdbot config file\n2. MEMORY.md and memory/ folder\n3. Cron job list\n4. Commits and pushes to GitHub\n\nExecute the script and report success/failure. If the git repo isn't initialized yet, report that so Jake can set it up.",
+        "model": "openrouter/moonshotai/kimi-k2.5",
+        "timeoutSeconds": 300,
+        "deliver": true
+      },
+      "state": {
+        "nextRunAtMs": 1770192000000
+      }
+    },
+    {
+      "id": "b555aae6-c0af-46cf-b988-a53cd84d1a33",
+      "agentId": "main",
+      "name": "x-trend-research",
+      "description": "Research X/Twitter for Clawdbot ideas and tools people are shipping",
+      "enabled": true,
+      "createdAtMs": 1770151898568,
+      "updatedAtMs": 1770152093355,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1,4",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Search X/Twitter and tech communities for interesting Clawdbot/AI agent ideas, tools, and workflows people are building. Focus on:\n1. New skills or integrations\n2. Automation patterns\n3. Productivity workflows\n4. Business use cases\n\nFor each finding:\n- What is it?\n- Who built it/who's using it?\n- Why might it be useful for Jake (PMHNP billing business + smart home setup)?\n- Estimated effort to implement\n- RECOMMENDATION: Should we do it? (Yes/No/Maybe with reasoning)\n\nDO NOT implement anything. Present findings as a curated list for Jake to review and decide. Format as:\n\n## Trend #1: [Name]\n**What:** Description\n**Source:** Link/origin\n**Why for Jake:** Specific relevance\n**Effort:** Low/Medium/High\n**Recommendation:** Yes/No/Maybe + reasoning\n\nEnd with: \"Reply with the number(s) you want me to implement, or ask questions about any item.\"",
+        "model": "openrouter/moonshotai/kimi-k2.5",
+        "timeoutSeconds": 600,
+        "deliver": true
+      },
+      "state": {
+        "nextRunAtMs": 1770303600000
+      }
+    },
+    {
+      "id": "22bf87ec-bf1c-419f-939f-45e947a71dce",
+      "agentId": "main",
+      "name": "content-creator",
+      "description": "Creates SEO blog posts about PMHNP billing every other day",
+      "enabled": true,
+      "createdAtMs": 1770151898540,
+      "updatedAtMs": 1770152093326,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 */2 * *",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "You are the Content Creator agent for pmhnpbilling.com. \n\nBEFORE writing a new blog post, read /root/clawd/pmnhp-billing/content-strategy/blog-performance.md to understand:\n1. Which topics have performed well (High Performers)\n2. Which topics underperformed (Low Performers - AVOID similar topics)\n3. Keyword gaps that need filling\n\nBased on this data:\n- Double down on High Performer topics (similar angles, deeper dives)\n- Avoid Low Performer topics unless you have a unique angle\n- Fill identified keyword gaps\n\nIf no performance data exists yet (new site), use these proven topics:\n- Insurance credentialing for PMHNPs\n- CPT codes for psychiatric services\n- Telehealth billing requirements\n- Claim denial appeals\n- Starting a private practice\n\nWrite a NEW blog post with performance-informed topic selection. Create an HTML file in /root/clawd/pmnhp-billing/blog/ with filename based on title. Update /root/clawd/pmnhp-billing/blog/index.html to add the new post. Push to GitHub. Report the title, topic strategy, and expected performance tier.",
+        "model": "openrouter/moonshotai/kimi-k2.5",
+        "timeoutSeconds": 600,
+        "deliver": true
+      },
+      "state": {
+        "nextRunAtMs": 1770307200000
+      }
+    },
+    {
+      "id": "3b05209d-6348-43a1-add3-7e32991ba2a8",
+      "agentId": "main",
+      "name": "competitor-intel",
+      "description": "Monitors competitor PMHNP billing services weekly",
+      "enabled": true,
+      "createdAtMs": 1770151898550,
+      "updatedAtMs": 1770152093334,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "You are the Competitor Intel agent. Research PMHNP billing services and psychiatric practice billing companies. Use Tavily to search for: 'PMHNP billing services pricing', 'psychiatric billing company reviews', 'mental health billing services Illinois'. Find 3-5 competitors and note: their pricing (if public), services offered, marketing approach, reviews/reputation, unique selling points. Save findings to /root/clawd/pmnhp-billing/competitor-intel.md with date. Identify gaps or opportunities Jake can exploit. Report key insights and actionable recommendations.",
+        "model": "openrouter/moonshotai/kimi-k2.5",
+        "timeoutSeconds": 600,
+        "deliver": true
+      },
+      "state": {
+        "nextRunAtMs": 1770649200000
+      }
+    },
+    {
+      "id": "f2821816-ca8c-49fe-8cb6-ad76c3a1ab9c",
+      "agentId": "main",
+      "name": "seo-index-check",
+      "description": "Weekly check of pmhnpbilling.com Google indexing status",
+      "enabled": true,
+      "createdAtMs": 1770151898559,
+      "updatedAtMs": 1770152093343,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "tz": "America/Chicago"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "next-heartbeat",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check if pmhnpbilling.com is indexed on Google. Search for \"site:pmhnpbilling.com\" and count how many pages are indexed. Also check for specific keywords like \"PMHNP billing Chicago\" to see if the site ranks.\n\nALSO: Check each blog post's performance:\n- /blog/illinois-telehealth-billing-guide.html\n- /blog/prior-authorization-guide.html  \n- /blog/mental-health-parity-illinois.html\n- /blog/costly-billing-mistakes.html\n\nIf any posts are indexed, note their approximate ranking for target keywords.\n\nUpdate /root/clawd/pmnhp-billing/content-strategy/blog-performance.md with findings.\n\nReport: 1) How many pages indexed, 2) Blog post performance status, 3) Any ranking keywords found, 4) Content strategy recommendations based on data.",
+        "model": "openrouter/moonshotai/kimi-k2.5",
+        "timeoutSeconds": 600,
+        "deliver": true
+      },
+      "state": {
+        "nextRunAtMs": 1770649200000
+      }
+    }
+  ]
+}
